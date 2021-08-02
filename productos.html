@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda-Productos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="indice">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="#">Productos</a></li>
+            <button type="button" class="btn btn-primary" onclick="showProductos()" data-toggle="modal" data-target="#exampleModal">
+              Carrito de compra
+            </button>
+        </nav>
+    </header>
+    <section class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <article class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Carrito de compra</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="listaProductos">
+              Lista de productos:
+            </div>
+            <div id="numeroProductos">
+              Número total de productos:
+            </div>
+            <div id="precioTotal">
+              Precio: 
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="vaciarCarrito" onclick="vaciarCarrito()">Vaciar Carrito</button>
+            <button type="button" class="btn btn-secondary" onclick="borrarInfo()" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="alert('Pago realizado correctamente')">Pagar</button>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section>
+        <h1>Lista de productos</h1>
+        <article class="productos">
+            <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <div class="card" id ="platano" style="width: 18rem;">
+                        <img src="img/platanos.png" class="card-img-top" alt="platanos">
+                        <div class="card-body">
+                          <h5 class="card-title">Platanos de Canarias</h5>
+                          <p class="card-text">Platanos comestibles ;)</p>
+                          <p>Precio: <span id="precioPlatano">1.99</span>€/kg</p>
+                          <button type="submit" onclick="añadirCarritoPlatano()">Añadir al carrito</button>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" id="aguacate" style="width: 18rem;">
+                        <img src="img/aguacate.png" class="card-img-top" alt="aguacate">
+                        <div class="card-body">
+                          <h5 class="card-title">Aguacates</h5>
+                          <p class="card-text">Aguacates sin agua</p>
+                          <p>Precio: <span id="precioAguacate">3.49</span>€/kg</p>
+                          <button type="submit" onclick="añadirCarritoAguacate()">Añadir al carrito</button>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card"  id="kiwis" style="width: 18rem;">
+                        <img src="img/kiwis.jfif" class="card-img-top" alt="kiwis verdes zesprin">
+                        <div class="card-body">
+                          <h5 class="card-title">Kiwis Verdes Zesprin</h5>
+                          <p class="card-text">Kiwis como tus ojos, bello</p>
+                          <p>Precio: <span id="precioKiwis">4.19</span>€/kg</p>
+                          <button type="submit" onclick="añadirCarritoKiwis()">Añadir al carrito</button>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="card" id="mango" style="width: 18rem;">
+                        <img src="img/mango.png" class="card-img-top" alt="mango">
+                        <div class="card-body">
+                          <h5 class="card-title">Mango</h5>
+                          <p class="card-text">Mango del rico mango, sabrosón</p>
+                          <p>Precio: <span id="precioMango">2.89</span>€/kg</p>
+                          <button type="submit" onclick="añadirCarritoMango()">Añadir al carrito</button>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" id="manzanas" style="width: 18rem;">
+                        <img src="img/manzanas.png" class="card-img-top" alt="manzanas">
+                        <div class="card-body">
+                          <h5 class="card-title">Manzanas</h5>
+                          <p class="card-text">Venenosas, como tú</p>
+                          <p>Precio: <span id="precioManzanas">0.99</span>€/kg</p>
+                          <button type="submit" onclick="añadirCarritoManzanas()">Añadir al carrito</button>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" id="melon" style="width: 18rem;">
+                        <img src="img/melon.png" class="card-img-top" alt="melón">
+                        <div class="card-body">
+                          <h5 class="card-title">Melón</h5>
+                          <p class="card-text">Melón como tu cabeza de grande</p>
+                          <p>Precio: <span id="precioMelon">1.99</span>€/kg</p>
+                          <button type="submit" onclick="añadirCarritoMelon()">Añadir al carrito</button>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                      <div class="card" id="nectarinas" style="width: 18rem;">
+                          <img src="img/nectarinas.png" class="card-img-top" alt="Nectarinas">
+                          <div class="card-body">
+                            <h5 class="card-title">Nectarinas</h5>
+                            <p class="card-text">Nectarinas sin cocaína ;)</p>
+                            <p>Precio: <span id="precioNectarinas">1.59</span>€/kg</p>
+                            <button type="submit" onclick="añadirCarritoNectarinas()">Añadir al carrito</button>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card" id="peras" style="width: 18rem;">
+                          <img src="img/pera.png" class="card-img-top" alt="pera">
+                          <div class="card-body">
+                            <h5 class="card-title">Peras</h5>
+                            <p class="card-text">Peras por doquier</p>
+                            <p>Precio: <span id="precioPeras">0.69</span>€/kg</p>
+                            <button type="submit" onclick="añadirCarritoPeras()">Añadir al carrito</button>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card" id="piña" style="width: 18rem;">
+                          <img src="img/piña.png" class="card-img-top" alt="piña golden">
+                          <div class="card-body">
+                            <h5 class="card-title">Piña Golden</h5>
+                            <p class="card-text">Piña que te como la coquiña</p>
+                            <p>Precio: <span id="precioPiña">5.59</span>€/kg</p>
+                            <button type="submit" onclick="añadirCarritoPiña()">Añadir al carrito</button>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+        </article>
+    </section>  
+    <footer>
+        <addres>
+            <p>&copy; Licencia de venta 2021<span><a href="#"><img src="logos/instagram.png"></a></span><span><a href="#"><img src="logos/twitter.png"></a></span></p>
+        </addres>
+    </footer>
+    <script src="carrito.js"></script>
+</body>
+</html>

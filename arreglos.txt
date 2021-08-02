@@ -1,0 +1,7 @@
+Mostrar productos que sean más de uno en una linea
+
+Quitar productos individualmente
+
+Refrescar la ventana al vaciar el carrito
+
+Dar formato ya de maquetación
